@@ -1,0 +1,698 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>DAMOA</title>
+
+        <!-- fontawesome -->
+        <script src="https://kit.fontawesome.com/3f2e83c1a6.js"></script>
+
+        <!-- -- -->
+        <script
+            src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link
+            href="../../fonts.googleapis.com/css-family=Lato.html"
+            rel="stylesheet"
+            type="text/css">
+        <link
+            href="../../fonts.googleapis.com/css-family=Montserrat.html"
+            rel="stylesheet"
+            type="text/css">
+        <link
+            rel="stylesheet"
+            href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+        <!-- Bootstrap CSS -->
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous">
+        <script
+            src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+        <style>
+            body {
+                font: 400 15px Lato, sans-serif;
+                line-height: 1.8;
+                color: #818181;
+            }
+            h2 {
+                font-size: 24px;
+                text-transform: uppercase;
+                color: #303030;
+                font-weight: 600;
+                margin-bottom: 30px;
+            }
+            /* h4 {
+                font-size: 19px;
+                line-height: 1.375em;
+                color: #303030;
+                font-weight: 400;
+                margin-bottom: 30px;
+            } */
+            .jumbotron {
+                background-color: #f4511e;
+                color: #fff;
+                padding: 100px 25px;
+                font-family: Montserrat, sans-serif;
+            }
+            .search-box {
+                position: relative;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                background: #2f3640;
+                height: 50px;
+                width: 300px;
+                border-radius: 10px;
+                margin-top: 50px;
+                padding: 10px;
+            }
+            /* .search-box:hover > .search-txt {
+          width: 240px;
+          padding: 0 6px;
+        }
+        .search-box:hover > .search-btn {
+          background: white;
+        }  
+         */
+            .search-btn {
+                color: #e84118;
+                float: right;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background: #2f3640;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .search-txt {
+                border: none;
+                background: none;
+                outline: none;
+                float: left;
+                padding: 0;
+                color: white;
+                font-size: 16px;
+                line-height: 30px;
+                width: 240px;
+            }
+            .enter-btn {
+                height: 70px;
+                width: 120px;
+                background: #2f3640;
+                border-radius: 6%;
+            }
+            /* Black buttons with extra padding and without rounded borders */
+            .btn {
+                padding: 10px 20px;
+                background-color: #f4511e;
+                border: 1px solid #f4511e;
+                color: #f1f1f1;
+                border-radius: 0;
+                transition: 0.2s;
+            }
+
+            /* On hover, the color of .btn will transition to white with black text */
+            .btn:focus,
+            .btn:hover {
+                border: 1px solid #f4511e;
+                background-color: #fff;
+                color: #f4511e;
+            }
+            .container-fluid {
+                padding: 60px 50px;
+                margin: 0 330px;
+            }
+            .bg-grey {
+                background-color: #f6f6f6;
+            }
+            .logo-small {
+                color: #f4511e;
+                font-size: 50px;
+            }
+            .logo {
+                color: #f4511e;
+                font-size: 200px;
+            }
+            .thumbnail {
+                padding: 0 0 100px;
+                border: none;
+                border-radius: 0;
+            }
+             img {
+                width: 100px;
+                height: 100px;
+                margin: 0 auto;
+                float: left;
+            }
+            .thumbnail p {
+                width: 350px;
+                height: 50px;
+                padding: 0;
+                margin: 0;
+                float: left;
+            }
+            /* 모달css추가 */
+            .close,
+            .modal-header h4 {
+                background-color: #333;
+                color: #fff !important;
+                text-align: center;
+                font-size: 30px;
+            }
+
+            .modal-body,
+            .modal-header {
+                padding: 40px 50px;
+            }
+            .carousel-control.left,
+            .carousel-control.right {
+                background-image: none;
+                color: #f4511e;
+            }
+            .carousel-indicators li {
+                border-color: #f4511e;
+            }
+            .carousel-indicators li.active {
+                background-color: #f4511e;
+            }
+            .item h4 {
+                font-size: 19px;
+                line-height: 1.375em;
+                font-weight: 400;
+                font-style: italic;
+                margin: 70px 0;
+            }
+            .item span {
+                font-style: normal;
+            }
+            .panel {
+                border: 1px solid #f4511e;
+                border-radius: 0 !important;
+                transition: box-shadow 0.5s;
+            }
+            .panel:hover {
+                box-shadow: 5px 0 40px rgba(0,0,0, .2);
+            }
+            .panel-footer .btn:hover {
+                border: 1px solid #f4511e;
+                background-color: #fff !important;
+                color: #f4511e;
+            }
+            .panel-heading {
+                color: #fff !important;
+                background-color: #f4511e !important;
+                padding: 25px;
+                border-bottom: 1px solid transparent;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+            .panel-footer {
+                background-color: white !important;
+            }
+            .panel-footer h3 {
+                font-size: 32px;
+            }
+            .panel-footer h4 {
+                color: #aaa;
+                font-size: 14px;
+            }
+            .panel-footer .btn {
+                margin: 15px 0;
+                background-color: #f4511e;
+                color: #fff;
+            }
+            .navbar {
+                margin-bottom: 0;
+                background-color: #f4511e;
+                z-index: 9999;
+                border: 0;
+                font-size: 12px !important;
+                line-height: 1.42857143 !important;
+                letter-spacing: 4px;
+                border-radius: 0;
+                font-family: Montserrat, sans-serif;
+            }
+            .navbar .navbar-brand,
+            .navbar li a {
+                color: #fff !important;
+            }
+            .navbar-nav li a:hover,
+            .navbar-nav li.active a {
+                color: #f4511e !important;
+                background-color: #fff !important;
+            }
+            .navbar-default .navbar-toggle {
+                border-color: transparent;
+                color: #fff !important;
+            }
+            
+            .slideanim {
+                visibility: hidden;
+            }
+            .slide {
+                animation-name: slide;
+                -webkit-animation-name: slide;
+                animation-duration: 1s;
+                -webkit-animation-duration: 1s;
+                visibility: visible;
+            }
+            /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+            .row.content {
+                height: 1500px;
+            }
+
+            /* Set gray background color and 100% height */
+            .sidenav {
+                background-color: #f1f1f1;
+                height: 100%;
+            }
+            /* On small screens, set height to 'auto' for sidenav and grid */
+            @media screen and (max-width: 767px) {
+                .sidenav {
+                    height: auto;
+                    padding: 15px;
+                }
+                .row.content {
+                    height: auto;
+                }
+            }
+            @keyframes slide {
+                0% {
+                    opacity: 0;
+                    -webkit-transform: translateY(70%);
+                }
+                100% {
+                    opacity: 1;
+                    -webkit-transform: translateY(0%);
+                }
+            }
+            @-webkit-keyframes slide {
+                0% {
+                    opacity: 0;
+                    -webkit-transform: translateY(70%);
+                }
+                100% {
+                    opacity: 1;
+                    -webkit-transform: translateY(0%);
+                }
+            }
+            @media screen and (max-width: 768px) {
+                .col-sm-4 {
+                    text-align: center;
+                    margin: 25px 0;
+                }
+                .btn-lg {
+                    width: 100%;
+                    margin-bottom: 35px;
+                }
+            }
+            .lili:hover #alertmenu{
+                display: block;
+                
+            }
+            #alertmenu{
+                display: none;
+                background-color: white;
+                
+            }
+           
+        </style>
+    </head>
+    <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+        <!--nav bar -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button
+                        type="button"
+                        class="navbar-toggle"
+                        data-toggle="collapse"
+                        data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'main' %}">DAMOA</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="{% url 'main' %}">홈</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'boardmain' %}">게시판</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'gmain' %}">공구</a>
+                        </li>
+                        <li class="lili">
+                            <a class="auctiontag"href='{% url "mainA"%}'>경매 <span class="badge badge-light" id="badge"></span>
+                                <span class="sr-only">unread messages</span></a>
+                            <div class="alertmenus" id = 'alertmenu'>
+                                <p id = "realtext"></p>
+                               <!-- <span class="dropdown-item" id ="alert" onclick='return move();'></span> -->
+                            </div>
+                        </li>
+                        <li>
+                            {% if log == 1 %}
+                            <a class="nav-link" href="{% url 'logout' %}">로그아웃</a>
+                            {% else %}
+                            <a class="nav-link" href="{% url 'login' %}">로그인</a>
+                            {% endif %}
+                        </li>
+                        <li>
+                            <a href="{% url 'mymain' %}">마이페이지</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+
+                </div>
+            </div>
+
+        </div>
+        <div class="container">
+            <div class="row content">
+              <div class="col-sm-3 sidenav">
+                <h4>검색</h4>
+                <form class="form-inline my-2 my-lg-0" action="{%url 'search'%}" method="POST">
+                    {%csrf_token%}
+                    <ul class="nav nav-pills nav-stacked">
+                      <label class="checkbox-inline">
+                        <input type="checkbox" name="auction">경매
+                      </label>
+                      <label class="checkbox-inline">
+                        <input type="checkbox" name="grouppurchase">공구
+                      </label>
+                    </ul><br>
+                    <div class="input-group">
+                      <input class="form-control my-sm-4" type="search" placeholder="Search" aria-label="Search" name="searchbar">
+                      <span class="input-group-btn">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        <span class="glyphicon glyphicon-search"></span>
+                      </button>
+                    </span>
+                  </div>
+                </form>
+               
+              </div>
+             
+              <div class="col-sm-9">
+                <h4><small>최근 글</small></h4>
+                  {%if auction and grouppurchase%}
+                  {%for thing in auction%}
+                <hr>
+                <h2>{{thing.title}}</h2>
+                <h5><span class="glyphicon glyphicon-time"></span> 1월1일1시1분</h5>
+                <br>
+                <img src="{{thing.image.url}}" /> 
+                <p>{{thing.content|linebreaks}}</p>
+                <br><br>
+                {%endfor%}
+                  {%for thing in grouppurchase%}
+                  <hr>
+                <h2>{{thing.title}}</h2>
+                <h5><span class="glyphicon glyphicon-time"></span> 1월1일1시1분</h5>
+                <br>
+                <img src="{{thing.image.url}}" /> 
+                <p>{{thing.content|linebreaks}}</p>
+                <br><br>
+                {%endfor%}
+                {%elif auction%}
+                  {%for thing in auction%}
+                  <hr>
+                <h2>{{thing.title}}</h2>
+                <h5><span class="glyphicon glyphicon-time"></span> 1월1일1시1분</h5>
+                <br>
+                <img src="{{thing.image.url}}" /> 
+                <p>{{thing.content|linebreaks}}</p>
+                <br><br>
+                {%endfor%}
+                {%elif grouppurchase%}
+                  {%for thing in grouppurchase%}
+                <h2>{{thing.title}}</h2>
+                <h5><span class="glyphicon glyphicon-time"></span> 1월1일1시1분</h5>
+                <br>
+                
+                <img src="{{thing.image.url}}" /> 
+                <p>{{thing.content|linebreaks}}</p>
+                <br><br><hr>
+                {%endfor%}
+                {%endif%}
+                <br><br>
+
+                
+          
+                <h4>Leave a Comment:</h4>
+                <form role="form">
+                  <div class="form-group">
+                    <textarea class="form-control" rows="3" required></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-success">Submit</button>
+                </form>
+                <br><br>
+                
+                <p><span class="badge">2</span> Comments:</p><br>
+                
+                <div class="row">
+                  <div class="col-sm-2 text-center">
+                    <img src="bandmember.jpg" class="img-circle" height="65" width="65" alt="Avatar">
+                  </div>
+                  <div class="col-sm-10">
+                    <h4>Anja <small>Sep 29, 2015, 9:12 PM</small></h4>
+                    <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <br>
+                  </div>
+                  <div class="col-sm-2 text-center">
+                    <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
+                  </div>
+                  <div class="col-sm-10">
+                    <h4>John Row <small>Sep 25, 2015, 8:25 PM</small></h4>
+                    <p>I am so happy for you man! Finally. I am looking forward to read about your trendy life. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <br>
+                    <p><span class="badge">1</span> Comment:</p><br>
+                    <div class="row">
+                      <div class="col-sm-2 text-center">
+                        <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
+                      </div>
+                      <div class="col-xs-10">
+                        <h4>Nested Bro <small>Sep 25, 2015, 8:28 PM</small></h4>
+                        <p>Me too! WOW!</p>
+                        <br>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                  <form class="form-inline my-2 my-lg-0" action="{%url 'search'%}" method="POST">
+                      {%csrf_token%}
+                      
+                      <input class="form-control my-sm-4" type="search" placeholder="Search" aria-label="Search" name="searchbar">
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                          <div class="container">
+                              <label class="checkbox-inline">
+                                  <input type="checkbox" name="auction">경매
+                                </label>
+                                <label class="checkbox-inline">
+                                  <input type="checkbox" name="grouppurchase">공구
+                                </label>
+                              
+                          </div>
+                  </form>
+                </div>
+            </div>
+        </div> -->
+         <!--검색 결과 출력-->
+         <!-- {%if auction and grouppurchase%}
+         {%for thing in auction%}
+             {{thing.title}}
+             {{thing.content|linebreaks}}
+             <img src="{{thing.image.url}}" /> 
+             <br>
+         {%endfor%}
+         {%for thing in grouppurchase%}
+                 {{thing.title}}
+                 {{thing.content|linebreaks}}
+                 <img src="{{thing.image.url}}" /> 
+                 <br>
+         {%endfor%}
+     {%elif auction%}
+         {%for thing in auction%}
+             {{thing.title}}
+             {{thing.content|linebreaks}}
+             <img src="{{thing.image.url}}" /> 
+             <br>
+         {%endfor%}
+     
+     {%elif grouppurchase%}
+         {%for thing in grouppurchase%}
+             {{thing.title}}
+             {{thing.content|linebreaks}}
+             <img src="{{thing.image.url}}" />
+             <br> 
+         {%endfor%}
+     {%endif%} -->
+     <script
+     src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+     crossorigin="anonymous"></script>
+ <script
+     src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+     crossorigin="anonymous"></script>
+ <script
+     src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+     crossorigin="anonymous"></script>
+
+    </body>
+
+
+    <script>
+
+        var url1, url2,url3;
+        var roomName = {{ username }};
+        var id, string;
+        var idvalue = 1;
+        var ex = false;
+        var count;
+    
+        function once(){
+              if(!ex){
+                sessionStorage.setItem("count", 1);
+                sessionStorage.setItem('alertcnt',0);
+                ex = true;
+              }
+              
+          };
+    
+        var chatSocket = new WebSocket(
+            'ws://' + window.location.host +
+            '/ws/chat/' + roomName + '/');
+    
+    
+    
+           
+     
+        // 메시지 받기
+        chatSocket.onmessage = function(e) {
+            var data = JSON.parse(e.data);
+            // var message = data['message'];
+            // var nick = data['username'];
+            var alerts = data['alerts'];
+            var alertsid = data['alertsid'];
+            count = data['count']
+            var urldata;
+            var url;
+            
+            sessionStorage.setItem("count", count);
+            // if(alerts.length>0){
+            //   alert('마감된 경매내역이 있습니다');
+            // }
+            for(var i = 0; i <alerts.length; i++){
+                var  alertthing = document.getElementById("alertmenu");
+              var elements = document.createElement('span');
+              var divs = document.createElement('div');
+              var linebreak = document.createElement('br');
+              var cnt;
+              id  = alertsid[i];
+              var title = alerts[i];
+             
+              var ss = sessionStorage.getItem('alertcnt');
+              var sss = Number(ss);
+              if(alerts.length > 0)
+                sss = sss + 1;
+              sessionStorage.setItem('alertcnt',sss);
+              alertthing.appendChild(divs);
+              divs.appendChild(elements);
+            
+              elements.setAttribute('id',idvalue.toString());
+              elements.setAttribute('data-value',alertsid[i]);
+              elements.setAttribute('class',"spantag");
+              document.getElementById(idvalue.toString()).innerHTML = title;
+             
+              elements.setAttribute('onclick',"return move(this.getAttribute('data-value'))");
+              alertthing.appendChild(linebreak);   
+              document.getElementById("badge").innerHTML = sessionStorage.getItem('alertcnt');
+              //'<span class="dropdown-item" id ="'+idvalue.toString()+'" onclick="return move();">' +id +'</span>'
+              
+              idvalue = idvalue + 1;
+             
+            
+            }
+               
+          }
+          
+      // url 이동을 위한 함수
+        function move(id){
+          
+          document.location.href = "/auction/detail/"+ id + '/'
+         
+        }
+    
+    
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+    
+        // document.querySelector('#chat-message-input').focus();
+        // document.querySelector('#chat-message-input').onkeyup = function(e) {
+        //     if (e.keyCode === 13) {  // enter, return
+        //         document.querySelector('#chat-message-submit').click();
+        //     }
+        // };
+    
+        // document.getElementById('alert').onclick = function() {
+        //   window.location.href=url1;
+           
+        // };
+    
+        // 1초마다 현재시간 가져오기
+        playAlert = setInterval(function() {
+            once();
+            // var messageInputDom = document.querySelector('#chat-message-input');
+            // var message = messageInputDom.value;
+            // var nick = document.querySelector('#chat-nick-input').value;
+            var counts = sessionStorage.getItem("count");
+            
+            var data = JSON.stringify({
+                // 'message': message,
+                // 'username': nick,
+                'count': counts,
+            });
+            chatSocket.send(data);
+            // messageInputDom.value = '';  
+        }, 1000);
+    </script>
+</html>

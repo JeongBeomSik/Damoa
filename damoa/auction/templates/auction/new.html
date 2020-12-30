@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>상품 등록</title>
+  </head>
+  <body>
+    <div class="container">
+        <h1>상품을 등록하는 페이지입니다</h1>
+        <form method='POST' action="{% url 'create' %}" enctype="multipart/form-data">
+          {% csrf_token %}
+            <p>작성자:</p>
+              {{loggeduser}}
+            <!-- 추가된 부분! -->
+            <p>카테고리</p>
+            <select class="form-control" name="category">
+              <option>식품</option>
+              <option>가구/생활/건강</option>
+              <option>디지털/가전</option>
+              <option>의류/잡화</option>
+              <option>뷰티</option>
+              <option>도서/취미/상품권</option>
+              <option>레저/자동차</option>
+              <option>반려동물</option>
+            </select>
+            <!-- 여기까지 -->
+            <p>상품명aa:</p>
+            <input type="text" name="title" required>
+            <p>상품이미지:</p>
+            <input type="file"  name="image" required>
+            <p>본문:</p>
+            <textarea cols=50 rows=5 name="content"></textarea>
+            <p>즉시구매가:</p>
+            <input type="number" name="buyitnow" required>
+            <p>시작가:</p>
+            <input type="number" name="up_price" required>
+            <p>마감일:</p>
+            <input type="datetime-local" name="e_date" required>
+            <!-- # !!! 새로 수정된 곳(기간) -->
+            <br><br>
+            <input class="btn btn-dark" type="submit" value="제출하기">
+        </form>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+
+  
+</html>

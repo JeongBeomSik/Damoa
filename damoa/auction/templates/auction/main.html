@@ -1,0 +1,696 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>DAMOA</title>
+        <!-- ----------추가부분 -->
+        <!-- fontawesome -->
+        <script src="https://kit.fontawesome.com/3f2e83c1a6.js"></script>
+
+        <!-- -- -->
+        <script
+            src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link
+            href="../../fonts.googleapis.com/css-family=Lato.html"
+            rel="stylesheet"
+            type="text/css">
+        <link
+            href="../../fonts.googleapis.com/css-family=Montserrat.html"
+            rel="stylesheet"
+            type="text/css">
+        <link
+            rel="stylesheet"
+            href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+        <!-- Bootstrap CSS -->
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous">
+        <script
+            src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+        <style>
+            body {
+                font: 400 15px Lato, sans-serif;
+                line-height: 1.8;
+                color: #818181;
+            }
+            h2 {
+                font-size: 24px;
+                text-transform: uppercase;
+                color: #303030;
+                font-weight: 600;
+                margin-bottom: 30px;
+            }
+            /* h4 {
+                font-size: 19px;
+                line-height: 1.375em;
+                color: #303030;
+                font-weight: 400;
+                margin-bottom: 30px;
+            } */
+            .jumbotron {
+                background-color: #f4511e;
+                color: #fff;
+                padding: 100px 25px;
+                font-family: Montserrat, sans-serif;
+            }
+            .search-box {
+                position: relative;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                background: #2f3640;
+                height: 50px;
+                width: 300px;
+                border-radius: 10px;
+                margin-top: 50px;
+                padding: 10px;
+            }
+            /* .search-box:hover > .search-txt {
+          width: 240px;
+          padding: 0 6px;
+        }
+        .search-box:hover > .search-btn {
+          background: white;
+        }  
+         */
+            .search-btn {
+                color: #e84118;
+                float: right;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background: #2f3640;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .search-txt {
+                border: none;
+                background: none;
+                outline: none;
+                float: left;
+                padding: 0;
+                color: white;
+                font-size: 16px;
+                line-height: 30px;
+                width: 240px;
+            }
+            .enter-btn {
+                height: 70px;
+                width: 120px;
+                background: #2f3640;
+                border-radius: 6%;
+            }
+            /* Black buttons with extra padding and without rounded borders */
+            .btn {
+                padding: 10px 20px;
+                background-color: #f4511e;
+                border: 1px solid #f4511e;
+                color: #f1f1f1;
+                border-radius: 0;
+                transition: 0.2s;
+            }
+
+            /* On hover, the color of .btn will transition to white with black text */
+            .btn:focus,
+            .btn:hover {
+                border: 1px solid #f4511e;
+                background-color: #fff;
+                color: #f4511e;
+            }
+            .container-fluid {
+                padding: 60px 50px;
+                margin: 0 330px;
+            }
+            .bg-grey {
+                background-color: #f6f6f6;
+            }
+            .logo-small {
+                color: #f4511e;
+                font-size: 50px;
+            }
+            .logo {
+                color: #f4511e;
+                font-size: 200px;
+            }
+            .thumbnail {
+                padding: 0 0 100px;
+                border: none;
+                border-radius: 0;
+            }
+            .thumbnail img {
+                width: 100px;
+                height: 100px;
+                margin: 0 auto;
+                float: left;
+            }
+            .thumbnail p {
+                width: 350px;
+                height: 50px;
+                padding: 0;
+                margin: 0;
+                float: left;
+            }
+            /* 모달css추가 */
+            .close,
+            .modal-header  h4 {
+                background-color: #333;
+                color: #fff !important;
+                text-align: center;
+                font-size: 30px;
+            }
+
+            .modal-body,
+            .modal-header {
+                padding: 40px 50px;
+            }
+            .carousel-control.left,
+            .carousel-control.right {
+                background-image: none;
+                color: #f4511e;
+            }
+            .carousel-indicators li {
+                border-color: #f4511e;
+            }
+            .carousel-indicators li.active {
+                background-color: #f4511e;
+            }
+            .item h4 {
+                font-size: 19px;
+                line-height: 1.375em;
+                font-weight: 400;
+                font-style: italic;
+                margin: 70px 0;
+            }
+            .item span {
+                font-style: normal;
+            }
+            .panel {
+                border: 1px solid #f4511e;
+                border-radius: 0 !important;
+                transition: box-shadow 0.5s;
+            }
+            .panel:hover {
+                box-shadow: 5px 0 40px rgba(0,0,0, .2);
+            }
+            .panel-footer .btn:hover {
+                border: 1px solid #f4511e;
+                background-color: #fff !important;
+                color: #f4511e;
+            }
+            .panel-heading {
+                color: #fff !important;
+                background-color: #f4511e !important;
+                padding: 25px;
+                border-bottom: 1px solid transparent;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+            .panel-footer {
+                background-color: white !important;
+            }
+            .panel-footer h3 {
+                font-size: 32px;
+            }
+            .panel-footer h4 {
+                color: #aaa;
+                font-size: 14px;
+            }
+            .panel-footer .btn {
+                margin: 15px 0;
+                background-color: #f4511e;
+                color: #fff;
+            }
+            .navbar {
+                margin-bottom: 0;
+                background-color: #f4511e;
+                z-index: 9999;
+                border: 0;
+                font-size: 12px !important;
+                line-height: 1.42857143 !important;
+                letter-spacing: 4px;
+                border-radius: 0;
+                font-family: Montserrat, sans-serif;
+            }
+            .navbar .navbar-brand,
+            .navbar li a {
+                color: #fff !important;
+            }
+            .navbar-nav li a:hover,
+            .navbar-nav li.active a {
+                color: #f4511e !important;
+                background-color: #fff !important;
+            }
+            .navbar-default .navbar-toggle {
+                border-color: transparent;
+                color: #fff !important;
+            }
+            footer .glyphicon {
+                font-size: 20px;
+                margin-bottom: 20px;
+                color: #f4511e;
+            }
+            .slideanim {
+                visibility: hidden;
+            }
+            .slide {
+                animation-name: slide;
+                -webkit-animation-name: slide;
+                animation-duration: 1s;
+                -webkit-animation-duration: 1s;
+                visibility: visible;
+            }
+            /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+            .row.content {
+                height: 450px;
+            }
+
+            /* Set gray background color and 100% height */
+            .sidenav {
+                padding-top: 20px;
+                background-color: #f1f1f1;
+                height: 100%;
+            }
+
+            /* On small screens, set height to 'auto' for sidenav and grid */
+            @media screen and (max-width: 767px) {
+                .sidenav {
+                    height: auto;
+                    padding: 15px;
+                }
+                .row.content {
+                    height: auto;
+                }
+            }
+            @keyframes slide {
+                0% {
+                    opacity: 0;
+                    -webkit-transform: translateY(70%);
+                }
+                100% {
+                    opacity: 1;
+                    -webkit-transform: translateY(0%);
+                }
+            }
+            @-webkit-keyframes slide {
+                0% {
+                    opacity: 0;
+                    -webkit-transform: translateY(70%);
+                }
+                100% {
+                    opacity: 1;
+                    -webkit-transform: translateY(0%);
+                }
+            }
+            @media screen and (max-width: 768px) {
+                .col-sm-4 {
+                    text-align: center;
+                    margin: 25px 0;
+                }
+                .btn-lg {
+                    width: 100%;
+                    margin-bottom: 35px;
+                }
+            }
+            @media screen and (max-width: 480px) {
+                .logo {
+                    font-size: 150px;
+                }
+            }
+
+            .lili:hover #alertmenu{
+                display: block;
+                
+            }
+            #alertmenu{
+                display: none;
+                background-color: white;
+                border: solid #f4511e;
+                
+            }
+        </style>
+    </head>
+    <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+        <!--nav bar -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button
+                        type="button"
+                        class="navbar-toggle"
+                        data-toggle="collapse"
+                        data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'main' %}">DAMOA</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="{% url 'main' %}">홈</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'boardmain' %}">게시판</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'gmain' %}">공구</a>
+                        </li>
+                        <li class="lili">
+                            <a class="auctiontag"href='{% url "mainA"%}'>경매 <span class="badge badge-light" id="badge"></span>
+                                <span class="sr-only">unread messages</span></a>
+                            <div class="alertmenus" id = 'alertmenu'>
+                                <p id = "realtext"></p>
+                               <!-- <span class="dropdown-item" id ="alert" onclick='return move();'></span> -->
+                            </div>
+                        </li>
+                        <li>
+                            {% if log == 1 %}
+                            <a class="nav-link" href="{% url 'logout' %}">로그아웃</a>
+                            {% else %}
+                            <a class="nav-link" href="{% url 'login' %}">로그인</a>
+                            {% endif %}
+                        </li>
+                        <li>
+                            <a href="{% url 'mymain' %}">마이페이지</a>
+                        </li>
+                    </ul>a
+                </div>
+            </div>
+        </nav>
+  
+  <div class="container-fluid text-center bg-grey">
+    <!-- Used to open the Modal -->
+    <button class="btn"><a href="{% url 'new' %}">등록하기</a></button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4>
+                        <span class="glyphicon glyphicon-lock"></span>
+                        등록</h4>
+                </div>
+                <div class="modal-body">
+                    <form
+                        role="form"
+                        method='POST'
+                        action="{% url 'create' %}"
+                        enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <p>작성자 :  {{loggeduser}}</p>
+                            <p>카테고리</p>
+            <select class="form-control" name="category">
+              <option>식품</option>
+              <option>가구/생활/건강</option>
+              <option>디지털/가전</option>
+              <option>의류/잡화</option>
+              <option>뷰티</option>
+              <option>도서/취미/상품권</option>
+              <option>레저/자동차</option>
+              <option>반려동물</option>
+            </select>
+            <!-- 여기까지 -->
+                            <label for="psw">
+                                <span class="glyphicon glyphicon-shopping-cart"></span>상품명</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="title"
+                                id="title"
+                                placeholder="상품명">
+                        </div>
+                        <div class="form-group">
+                            <label for="psw">
+                                <span class="glyphicon glyphicon-shopping-cart"></span>본문</label>
+                            <textarea class="form-control" cols="50" rows="5" name="content" id="contnent"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="usrname">
+                                <span class="glyphicon glyphicon-user"></span>
+                                즉시구매가</label>
+                            <input
+                                type="number"
+                                class="form-control"
+                                name="buyitnow"
+                                id="buyitnow"
+                                placeholder="즉시구매가 입력">
+                        </div>
+                        <div class="form-group">
+                            <label for="usrname">
+                                <span class="glyphicon glyphicon-user"></span>
+                                입찰가</label>
+                            <input
+                                type="number"
+                                class="form-control"
+                                name="up_price"
+                                id="up_price"
+                                placeholder="입찰가 입력">
+                        </div>
+                        <div class="form-group">
+                            <label for="usrname">
+                                <span class="glyphicon glyphicon-user"></span>
+                              마감일</label>
+                            <input
+                                type="datetime-local"
+                                class="form-control"
+                                name="e_date"
+                                id="e_date"
+                                placeholder="마감일 입력">
+                        </div>
+                        <div class="form-group">
+                            <label for="usrname">
+                                <span class="glyphicon glyphicon-user"></span>
+                                상품이미지</label>
+                            <input type="file" class="form-control" name="image" id="image">
+                        </div>
+                        <button type="submit" class="btn btn-block">등록하기
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button
+                        type="submit"
+                        class="btn btn-danger btn-default pull-left"
+                        data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span>
+                        취소
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <!-- 상품리스트 -->
+  <div class="container-fluid text-center bg-wihte"> 
+    <div class="row content">
+        <div class="col-sm-10 text-left">
+            {% for post in posts %}
+                <div class="thumbnail">
+                    <div class="col-sm-2">
+                        {% if post.image %}
+                            <img src="{{ post.image.url }}" alt="img">
+                        {% endif %}
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="{% url 'detail' post.id %}">
+                            <h4>
+                                <strong>{{post.title}}</strong>
+                            </h4>
+                        </a>
+                        <p>{{post.content}}</p>
+                    </div>
+                    <div class="col-sm-4" style="float: right;">
+                        <p><strong>입찰가 </strong> :
+                            {{post.up_price}}
+                            <strong>즉구가</strong>  :
+                            {{post.buyitnow}}
+                            <strong>조회수</strong>  :
+                            {{post.lookup}}</p>
+                            <p><strong>마감일</strong> :
+                            {{post.e_date}}</p>
+                    </div >
+                    <!-- <a class="btn btn-primary btn " href="{% url 'detail' post.id %}">제품정보</a>
+                    -->
+                </div>
+                <hr>
+                {% endfor %}
+                    <!-- !!! 새로 수정된 곳(paginator) -->
+    <div class='container'>
+        {% if posts.has_previous %}
+        <a href='?page=1'>First</a>
+        <a href='?page={{posts.previous_page_number}}'>Previous</a>
+        {% endif %}
+    
+        <span>{{posts.number}}</span>
+        <span>of</span>
+        <span>{{posts.paginator.num_pages}}</span>
+    
+        {% if posts.has_next %}
+        <a href='?page={{posts.next_page_number}}'>Next</a>
+        <a href='?page={{posts.paginator.num_pages}}'>Last</a>
+        {% endif %}
+      </div>
+        </div>
+        
+            <div class="col-sm-2 sidenav">
+                <div class="well">
+                    <p>뭐넣을</p>
+                </div>
+                <div class="well">
+                    <p>뭐넣을</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<script>
+
+    var url1, url2,url3;
+    var roomName = {{ username }};
+    var id, string;
+    var idvalue = 1;
+    var ex = false;
+    var count;
+
+    function once(){
+          if(!ex){
+            sessionStorage.setItem("count", 1);
+            sessionStorage.setItem('alertcnt',0);
+            ex = true;
+          }
+          
+      };
+
+    var chatSocket = new WebSocket(
+        'ws://' + window.location.host +
+        '/ws/chat/' + roomName + '/');
+
+
+
+       
+ 
+    // 메시지 받기
+    chatSocket.onmessage = function(e) {
+        var data = JSON.parse(e.data);
+        // var message = data['message'];
+        // var nick = data['username'];
+        var alerts = data['alerts'];
+        var alertsid = data['alertsid'];
+        count = data['count']
+        var urldata;
+        var url;
+        
+        sessionStorage.setItem("count", count);
+        // if(alerts.length>0){
+        //   alert('마감된 경매내역이 있습니다');
+        // }
+        for(var i = 0; i <alerts.length; i++){
+            var  alertthing = document.getElementById("alertmenu");
+              var elements = document.createElement('span');
+              var divs = document.createElement('div');
+              var linebreak = document.createElement('br');
+              var cnt;
+              id  = alertsid[i];
+              var title = alerts[i];
+             
+              var ss = sessionStorage.getItem('alertcnt');
+              var sss = Number(ss);
+              if(alerts.length > 0)
+                sss = sss + 1;
+              sessionStorage.setItem('alertcnt',sss);
+              alertthing.appendChild(divs);
+              divs.appendChild(elements);
+            
+              elements.setAttribute('id',idvalue.toString());
+              elements.setAttribute('data-value',alertsid[i]);
+              elements.setAttribute('class',"spantag");
+              document.getElementById(idvalue.toString()).innerHTML = title;
+             
+              elements.setAttribute('onclick',"return move(this.getAttribute('data-value'))");
+              alertthing.appendChild(linebreak);   
+              document.getElementById("badge").innerHTML = sessionStorage.getItem('alertcnt');
+        
+          //'<span class="dropdown-item" id ="'+idvalue.toString()+'" onclick="return move();">' +id +'</span>'
+          
+          idvalue = idvalue + 1;
+         
+        
+        }
+           
+      }
+      
+  // url 이동을 위한 함수
+    function move(id){
+      
+      document.location.href = "/auction/detail/"+ id + '/'
+     
+    }
+
+
+    chatSocket.onclose = function(e) {
+        console.error('Chat socket closed unexpectedly');
+    };
+
+    // document.querySelector('#chat-message-input').focus();
+    // document.querySelector('#chat-message-input').onkeyup = function(e) {
+    //     if (e.keyCode === 13) {  // enter, return
+    //         document.querySelector('#chat-message-submit').click();
+    //     }
+    // };
+
+    // document.getElementById('alert').onclick = function() {
+    //   window.location.href=url1;
+       
+    // };
+
+    // 1초마다 현재시간 가져오기
+    playAlert = setInterval(function() {
+        once();
+        // var messageInputDom = document.querySelector('#chat-message-input');
+        // var message = messageInputDom.value;
+        // var nick = document.querySelector('#chat-nick-input').value;
+        var counts = sessionStorage.getItem("count");
+        
+        var data = JSON.stringify({
+            // 'message': message,
+            // 'username': nick,
+            'count': counts,
+        });
+        chatSocket.send(data);
+        // messageInputDom.value = '';  
+    }, 1000);
+</script>
+</html>
