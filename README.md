@@ -6,7 +6,7 @@
 
 개발프레임워크: Django2.2
 
-개발도구 VScode
+개발도구: VScode
 
 개발언어: python 3.7.8
 <br>
